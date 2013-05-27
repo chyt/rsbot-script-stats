@@ -7,7 +7,8 @@ This is a quick PHP script that I wrote to make storing script usage data in onl
 
 More information about this script and its usage can be found on my website, link provided above.
 
------License/Usage Agreement------
+License/Usage Agreement
+==================
 
 Copyright (C) 2013 Charles Tian
 
