@@ -46,10 +46,15 @@ function input($username, $runtime, $var1, $var2, $var3, $var4) {
 		}
 	}
 	else if(mysqli_num_rows($result)==0) {
-		$insert_query = "INSERT INTO $table_name (username, runtime, var1, var2, var3, var4) VALUES ('$username', '$runtime', '$var1', '$var2', '$var3', '$var4')";
-		$insert_result = mysqli_query($mysqli, $insert_query);
-		if(!$insert_result) {
-			echo "Error performing query.";
+		if(empty($username) || empty($runtime)) {
+			echo "You are missing some parameters.";
+		}
+		else {
+			$insert_query = "INSERT INTO $table_name (username, runtime, var1, var2, var3, var4) VALUES ('$username', '$runtime', '$var1', '$var2', '$var3', '$var4')";
+			$insert_result = mysqli_query($mysqli, $insert_query);
+			if(!$insert_result) {
+				echo "Error performing query.";
+			}
 		}
 	}
 	else {
