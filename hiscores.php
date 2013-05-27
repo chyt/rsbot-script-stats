@@ -8,7 +8,7 @@ global $param1;
 global $param2;
 global $param3;
 global $param4;
-$query = "SELECT * FROM $table_name ORDER BY runtime desc";
+$query = "SELECT * FROM $table_name ORDER BY runtime+0 desc";
 $result = mysqli_query($mysqli, $query);
 echo "<h1>Script Stats Usage Hiscores</h1><br/>";
 if(mysqli_num_rows($result) > 0) {
