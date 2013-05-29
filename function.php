@@ -61,12 +61,28 @@ function input($username, $runtime, $var1, $var2, $var3, $var4) {
 		echo "Error performing query.";
 	}
 }
-function convert_seconds($ss) {
-	$s = $ss%60;
-	$m = floor(($ss%3600)/60);
-	$h = floor(($ss%86400)/3600);
-	$d = floor(($ss%2592000)/86400);
-	
-	return "$d days $h hours $m minutes $s seconds";
+function convert_seconds($d)
+{
+    $periods = array( 'day'    => 86400,
+                      'hour'   => 3600,
+                      'minute' => 60,
+                      'second' => 1 );
+    $parts = array();
+    foreach ( $periods as $name => $dur )
+    {
+        $div = floor( $d / $dur );
+         if ( $div == 0 )
+                continue;
+         else if ( $div == 1 )
+                $parts[] = $div . " " . $name;
+         else
+                $parts[] = $div . " " . $name . "s";
+         $d %= $dur;
+    }
+    $last = array_pop( $parts );
+    if ( empty( $parts ) )
+        return $last;
+    else
+        return join( ', ', $parts ) . " and " . $last;
 }
 ?>
